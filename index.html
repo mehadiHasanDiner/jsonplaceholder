@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON placeholder</title>
+</head>
+<body>
+    <div id="all-content"></div>
+
+
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/photos')
+        .then(res =>res.json())
+        .then(data => getUrlElement(data));
+
+        function getUrlElement(data){
+            let content = "";
+        console.log(data);
+
+            data.forEach(albumId => {
+                content = content + `<div>
+                    <img style = "float: left;" src="${albumId.thumbnailUrl}" alt="">
+                    
+                    </div>`
+                    console.log(albumId.thumbnailUrl);
+            });
+
+            const divElement = document.getElementById('all-content');
+            divElement.innerHTML = content;
+        }
+        
+    </script>
+    
+</body>
+</html>
